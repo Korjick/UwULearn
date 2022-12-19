@@ -20,22 +20,14 @@ namespace UI.Menu
             _friendsPage.Init();
             _coursesPage.Init();
             _chatsPage.Init();
-            
-            _mainPage.FriendsButtonClicked += () => EnableFriends();
-            _mainPage.CoursesButtonClicked += () => EnableCourses();
-            _mainPage.ChatsButtonClicked += () => EnableChats();
-            
-            _friendsPage.HomeButtonClicked += () => EnableMain();
-            _friendsPage.CoursesButtonClicked += () => EnableCourses();
-            _friendsPage.ChatsButtonClicked += () => EnableChats();
-            
-            _coursesPage.FriendsButtonClicked += () => EnableFriends();
-            _coursesPage.HomeButtonClicked += () => EnableMain();
-            _coursesPage.ChatsButtonClicked += () => EnableChats();
-            
-            _chatsPage.FriendsButtonClicked += () => EnableFriends();
-            _chatsPage.CoursesButtonClicked += () => EnableCourses();
-            _chatsPage.HomeButtonClicked += () => EnableMain();
+
+            foreach (PageBase pageBase in new PageBase[]{_mainPage, _friendsPage, _coursesPage, _chatsPage})
+            {
+                pageBase.FriendsButtonClicked += () => EnableFriends();
+                pageBase.CoursesButtonClicked += () => EnableCourses();
+                pageBase.ChatsButtonClicked += () => EnableChats();
+                pageBase.ExitButtonClicked += () => EnableMain();
+            }
             
             EnableMain();
         }
